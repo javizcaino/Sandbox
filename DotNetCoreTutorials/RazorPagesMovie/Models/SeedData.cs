@@ -1,10 +1,12 @@
 ﻿namespace RazorPagesMovie.Models
 {
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.DependencyInjection;
-    using RazorPagesMovie.Data;
     using System;
     using System.Linq;
+
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.DependencyInjection;
+
+    using RazorPagesMovie.Data;
 
     public static class SeedData
     {

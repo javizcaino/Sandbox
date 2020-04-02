@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace RazorPagesMovie.Migrations
+﻿namespace RazorPagesMovie.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,10 +19,7 @@ namespace RazorPagesMovie.Migrations
                     Genre = table.Column<string>(nullable: true),
                     Price = table.Column<decimal>(type: "money", nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Movie", x => x.ID);
-                });
+                constraints: table => table.PrimaryKey("PK_Movie", x => x.ID));
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
