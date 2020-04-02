@@ -21,6 +21,8 @@
         [Column(TypeName = "money")]
         public decimal Price { get; set; }
 
+        public string Rating { get; set; }
+
         #endregion Public Properties
     }
 }
