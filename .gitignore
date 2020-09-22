@@ -328,3 +328,5 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+/ODataSamples/src/ODataSamples/ODataConfiguration/IngoreNullEntityPropertiesSerializerProvider.cs
+/ODataSamples/src/ODataSamples/ODataConfiguration/IngoreNullEntityPropertiesSerializer.cs
