@@ -1,0 +1,62 @@
+﻿@page "/counter"
+
+@using System.Threading
+
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<p><input type="number" @bind="@increment" @onkeydown="IncrementKeyHandler" @onkeydown:preventDefault /></p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me to increase</button>
+
+<button class="btn btn-secondary" @onclick="StartAutoIncrement">Start Auto Increment</button>
+<button class="btn btn-secondary" @onclick="StopAutoIncrement">Stop Auto Increment</button>
+
+@code {
+    private int currentCount = 0;
+    private int increment = 1;
+    private Timer timer = null;
+
+    private void IncrementCount()
+    {
+        currentCount += increment;
+    }
+
+    private void IncrementKeyHandler(KeyboardEventArgs eventArgs)
+    {
+        if (eventArgs.AltKey && eventArgs.Key.Equals("+"))
+        {
+            increment++;
+        }
+        else if (eventArgs.AltKey && eventArgs.Key.Equals("-") && increment > 1)
+        {
+            increment--;
+        }
+    }
+
+    private void StartAutoIncrement()
+    {
+        StopAutoIncrement();
+
+        timer = new Timer(
+            callback: (_) =>
+            {
+                IncrementCount();
+                this.StateHasChanged();
+            },
+            state: null,
+            dueTime: TimeSpan.FromSeconds(1),
+            period: TimeSpan.FromSeconds(1)
+        );
+    }
+
+    private void StopAutoIncrement()
+    {
+        if (timer != null)
+        {
+            timer.Dispose();
+            timer = null;
+        }
+    }
+}
