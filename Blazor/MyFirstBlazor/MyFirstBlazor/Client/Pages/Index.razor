@@ -5,3 +5,31 @@
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+<button type="button" class="btn btn-primary" @onclick="@ToggleAlert">Toggle</button>
+
+<DismissableAlert @ref="_alert" @bind-Show="@ShowAlert">
+    <span class="oi oi-check mr-2" aria-hidden="true"></span>
+    <strong>Blazor is soo cool!</strong>
+</DismissableAlert>
+
+<Timer TimeInSeconds="5" Tick="@(() => _alert.Dismiss())" />
+
+<Grandmother>
+    <Grandchild />
+    <DismissableAlert Show="true">
+        <Grandchild />
+    </DismissableAlert>
+</Grandmother>
+
+@code
+{
+    private DismissableAlert _alert;
+
+    public bool ShowAlert { get; set; } = true;
+
+    public void ToggleAlert()
+    {
+        ShowAlert = !ShowAlert;
+    }
+}

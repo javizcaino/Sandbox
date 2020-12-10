@@ -1,0 +1,13 @@
+﻿<h3>Grandchild</h3>
+
+<button type="button" @onclick="Increment">Inc...</button>
+
+@code {
+    [CascadingParameter(Name = "gm")]
+    public CounterData GrandmotherData { get; set; }
+
+    private void Increment()
+    {
+        GrandmotherData.Count++;
+    }
+}
